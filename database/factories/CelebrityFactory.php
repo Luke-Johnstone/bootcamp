@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Genre;
+use App\Models\Celebrity;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class GenreFactory extends Factory
+class CelebrityFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Genre::class;
+    protected $model = Celebrity::class;
 
     /**
      * Define the model's default state.
@@ -22,14 +22,10 @@ class GenreFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->genreRandom(),
-            'description' => $this->faker->sentence
+            'name' => $this->faker->name,
+            'age' => $this->faker->randomDigit(),
+            'nationality' => $this->faker->country,
+            'biography' => $this->faker->text
         ];
-    }
-
-    public function genreRandom() {
-        $genres = ['Action','Adventure','Comedy','Horror','Thriller'];
-
-        return $genres[array_rand($genres)];
     }
 }

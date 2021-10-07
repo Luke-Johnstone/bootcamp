@@ -2,17 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Celebrity;
+use App\Models\CelebrityMovie;
 use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MovieFactory extends Factory
+class CelebrityMovieFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Movie::class;
+    protected $model = CelebrityMovie::class;
 
     /**
      * Define the model's default state.
@@ -21,17 +23,9 @@ class MovieFactory extends Factory
      */
     public function definition()
     {
-
         return [
-            'title' => $this->faker->sentence,
-            'rating' => $this->ratingRandom(),
-            'description' => $this->faker->sentence
+            'celebrity_id' =>Celebrity::inRandomOrder()->first()->id,
+            'movie_id' =>Movie::inRandomOrder()->first()->id
         ];
-    }
-
-    public function ratingRandom() {
-        $ratings = ['G','PG','M','MA','R'];
-
-        return $ratings[array_rand($ratings)];
     }
 }
