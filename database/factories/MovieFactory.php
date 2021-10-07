@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -22,21 +23,23 @@ class MovieFactory extends Factory
      */
     public function definition()
     {
-        $genre = DB::table('genres')->first();
+//        $genre = DB::table('genres')->first();
+
         return [
             'title' => $this->faker->sentence,
-            'genre' => $genre->id,
+//            'genre' => $genre->id(),
+            'genre' => $this->genreRandom(),
             'rating' => $this->ratingRandom(),
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->sentence,
             'director' => $this->faker->name
         ];
     }
 
-//    public function genreRandom() {
-//        $genres = ['Action','Adventure','Comedy','Horror','Thriller'];
-//
-//        return $genres[array_rand($genres)];
-//    }
+    public function genreRandom() {
+        $genres = ['Action','Adventure','Comedy','Horror','Thriller'];
+
+        return $genres[array_rand($genres)];
+    }
 
     public function ratingRandom() {
         $ratings = ['G','PG','M','MA','R'];

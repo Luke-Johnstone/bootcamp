@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Genre;
+use App\Models\Director;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class GenreFactory extends Factory
+class DirectorFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Genre::class;
+    protected $model = Director::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class GenreFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->word(),
+            'name' => $this->faker->name,
             'description' => $this->faker->sentence
         ];
     }
